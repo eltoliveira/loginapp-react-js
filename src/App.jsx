@@ -49,7 +49,7 @@ const Login = () => {
           {/* Um campo de entrada de senha controlado que atualiza o estado 'password' */}
         </Form.Group>
         <Button type="submit">Logar</Button>
-        {/* O botão "Logar" agora estará centralizado */}
+        <Button variant="secondary" className="group1">Registrar</Button>
       </Form>
     </div>
   )

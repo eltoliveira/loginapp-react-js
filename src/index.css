@@ -70,3 +70,7 @@ body {
   text-align: center; /* Centralizar o texto dentro do formulário */
 }
 
+.group1 {
+  margin-right: 10px; /* Adicione a quantidade de margem desejada à direita do botão "Logar" */
+
+}
