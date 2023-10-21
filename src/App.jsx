@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { v4 as uuidv4 } from 'uuid';
+import "./firebase"
+
+
+
+
+const uniqueId = uuidv4();
+
 
 const Login = () => {
   const [email, setEmail] = useState(""); // Estado para armazenar o email do usuário
   const [password, setPassword] = useState(""); // Estado para armazenar a senha do usuário
+
 
   const onSubmit = (e) => {
     e.preventDefault(); // Prevenir o envio padrão do formulário
@@ -12,27 +21,10 @@ const Login = () => {
     const data = {
       email: email, // Obter o email do estado
       password: password, // Obter a senha do estado
+      userId: uniqueId, // Adicione o ID único aos dados
+
     };
-  
-
-    fetch("/login", {
-      method: "POST", // Realizar uma solicitação POST para a rota "/login"
-      body: JSON.stringify(data), // Enviar os dados do usuário como JSON
-    })
-      .then((response) => response.json()) // Analisar a resposta como JSON
-      .then((data) => {
-        // Verificar se o login foi bem-sucedido
-        if (data.success) {
-          // Iniciar uma sessão para o usuário
-          sessionStorage.setItem("user_id", data.user_id);
-
-          // Redirecionar o usuário para a página principal
-          window.location.href = "/";
-        } else {
-          // Exibir uma mensagem de erro se o login falhar
-          alert(data.error);
-        }
-      });
+    console.log(data); // Imprimir os dados no console
   };
 
   return (
